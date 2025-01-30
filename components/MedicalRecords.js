@@ -8,7 +8,7 @@ const medicalRecordSchema = new mongoose.Schema(
         height: { type: Number, required: true }, // in inches
         weight: { type: Number, required: true }, // in pounds
         headCircumference: { type: Number, required: true }, // in inches
-        vaccines: { type: mongoose.Schema.Types.ObjectId, ref: 'Vaccines', required: true }, // comma separated list of vaccines
+        vaccines: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Vaccine' }], // Reference to Vaccine model
         notes: { type: String, required: true },
     }
 );

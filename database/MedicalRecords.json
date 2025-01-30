@@ -1,0 +1,32 @@
+[
+    {
+        "childId": "60d0fe4f5311236168a109ca",
+        "date": "2023-01-15T00:00:00.000Z",
+        "location": "Doctor Office",
+        "height": 30,
+        "weight": 20,
+        "headCircumference": 18,
+        "vaccines": ["60d0fe4f5311236168a109d6", "60d0fe4f5311236168a109d7"],
+        "notes": "Routine check-up, all vaccines up to date."
+    },
+    {
+        "childId": "60d0fe4f5311236168a109cb",
+        "date": "2023-02-20T00:00:00.000Z",
+        "location": "Hospital",
+        "height": 32,
+        "weight": 22,
+        "headCircumference": 19,
+        "vaccines": ["60d0fe4f5311236168a109d8", "60d0fe4f5311236168a109d9"],
+        "notes": "Emergency visit due to fever, administered flu vaccine."
+    },
+    {
+        "childId": "60d0fe4f5311236168a109cc",
+        "date": "2023-03-10T00:00:00.000Z",
+        "location": "Home",
+        "height": 31,
+        "weight": 21,
+        "headCircumference": 18.5,
+        "vaccines": ["60d0fe4f5311236168a109da"],
+        "notes": "Home visit for routine vaccination."
+    }
+]

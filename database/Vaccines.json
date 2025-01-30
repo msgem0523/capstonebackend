@@ -1,0 +1,10 @@
+[
+    { "name": "Hepatitis B", "ageGroup": "Birth", "description": "Protects against Hepatitis B virus" },
+    { "name": "DTaP", "ageGroup": "1-2 months", "description": "Protects against Diphtheria, Tetanus, and Pertussis" },
+    { "name": "Rotavirus", "ageGroup": "1-2 months", "description": "Protects against Rotavirus infection" },
+    { "name": "Hib", "ageGroup": "1-2 months", "description": "Protects against Haemophilus influenzae type b" },
+    { "name": "Pneumococcal (PCV13)", "ageGroup": "1-2 months", "description": "Protects against Pneumococcal disease" },
+    { "name": "Polio (IPV)", "ageGroup": "1-2 months", "description": "Protects against Poliovirus" },
+    { "name": "MMR", "ageGroup": "12-15 months", "description": "Protects against Measles, Mumps, and Rubella" },
+    { "name": "Varicella", "ageGroup": "12-15 months", "description": "Protects against Chickenpox" }
+]

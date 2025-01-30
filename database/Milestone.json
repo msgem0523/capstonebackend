@@ -1,31 +1,31 @@
 [
     {
-        "childId": "60d0fe4f5311236168a109ca",
-        "date": "2023-01-10T00:00:00.000Z",
+        "childId": "ca",
+        "date": "2023-01-10",
         "category": "Physical",
         "description": "First steps taken without support."
     },
     {
-        "childId": "60d0fe4f5311236168a109cb",
-        "date": "2023-02-15T00:00:00.000Z",
+        "childId": "cb",
+        "date": "2023-02-15",
         "category": "Cognitive",
         "description": "Recognized and named different colors."
     },
     {
-        "childId": "60d0fe4f5311236168a109cc",
-        "date": "2023-03-20T00:00:00.000Z",
+        "childId": "cc",
+        "date": "2023-03-20",
         "category": "Social",
         "description": "Played cooperatively with other children."
     },
     {
-        "childId": "60d0fe4f5311236168a109ca",
-        "date": "2023-04-05T00:00:00.000Z",
+        "childId": "ca",
+        "date": "2023-04-05",
         "category": "Emotional",
         "description": "Expressed empathy towards a friend."
     },
     {
-        "childId": "60d0fe4f5311236168a109cb",
-        "date": "2023-05-10T00:00:00.000Z",
+        "childId": "cb",
+        "date": "2023-05-10",
         "category": "Language",
         "description": "Spoke in complete sentences."
     }

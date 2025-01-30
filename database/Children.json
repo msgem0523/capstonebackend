@@ -2,28 +2,28 @@
     {
         "firstName": "John",
         "lastName": "Doe",
-        "birthdate": "2015-06-15T00:00:00.000Z",
+        "birthdate": "2015-06-15",
         "gender": "Male",
-        "medicalRecords": ["60d0fe4f5311236168a109d6", "60d0fe4f5311236168a109d7"],
-        "milestones": ["60d0fe4f5311236168a109d8", "60d0fe4f5311236168a109d9"],
-        "parentId": "60d0fe4f5311236168a109c9"
+        "medicalRecords": ["d6", "d7"],
+        "milestones": ["d8", "d9"],
+        "parentId": "c9"
     },
     {
         "firstName": "Jane",
         "lastName": "Smith",
-        "birthdate": "2017-09-23T00:00:00.000Z",
+        "birthdate": "2017-09-23",
         "gender": "Female",
-        "medicalRecords": ["60d0fe4f5311236168a109da", "60d0fe4f5311236168a109db"],
-        "milestones": ["60d0fe4f5311236168a109dc", "60d0fe4f5311236168a109dd"],
-        "parentId": "60d0fe4f5311236168a109c8"
+        "medicalRecords": ["da", "db"],
+        "milestones": ["dc", "dd"],
+        "parentId": "c8"
     },
     {
         "firstName": "Alex",
         "lastName": "Johnson",
-        "birthdate": "2018-12-05T00:00:00.000Z",
+        "birthdate": "2018-12-05",
         "gender": "Other",
-        "medicalRecords": ["60d0fe4f5311236168a109de", "60d0fe4f5311236168a109df"],
-        "milestones": ["60d0fe4f5311236168a109e0", "60d0fe4f5311236168a109e1"],
-        "parentId": "60d0fe4f5311236168a109c7"
+        "medicalRecords": ["de", "df"],
+        "milestones": ["e0", "e1"],
+        "parentId": "c7"
     }
 ]

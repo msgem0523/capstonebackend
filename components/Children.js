@@ -8,7 +8,7 @@ const childSchema = new mongoose.Schema(
         gender: { type: String, enum:['Male', 'Female', 'Other'], required: true },
         medicalRecords: [{ type: mongoose.Schema.Types.ObjectId, ref: 'MedicalRecord' }],
         milestones: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Milestone' }],
-        parentId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+        parentId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     },
 );
 

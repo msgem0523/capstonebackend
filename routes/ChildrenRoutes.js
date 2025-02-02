@@ -26,22 +26,24 @@ router.get('/:id', async (req, res) => {
 
 // POST: Create a new child
 router.post('/', async (req, res) => {
-    const { firstName, lastName, birthdate, gender, parentId } = req.body;
-    const newChild = new Children({
-        firstName,
-        lastName,
-        birthdate,
-        gender,
-        parentId,
-    });
+    console.log('Received Data:', req.body);
 
     try {
-        const savedChild = await newChild.save();
-        res.status(201).json(savedChild);
+      const { firstName, lastName, birthdate, gender } = req.body;
+  
+      if (!firstName || !lastName || !birthdate || !gender) {
+        return res.status(400).json({ error: 'All fields are required' });
+      }
+  
+      const newChild = new Child({ firstName, lastName, birthdate, gender });
+      await newChild.save();
+  
+      res.status(201).json(newChild);
     } catch (error) {
-        res.status(400).json({ message: error.message });
+      console.error('Error adding child:', error);
+      res.status(500).json({ error: 'Internal server error' });
     }
-});
+  });
 
 // PUT: Update a child by ID
 router.put('/:id', async (req, res) => {

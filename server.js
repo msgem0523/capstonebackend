@@ -1,6 +1,7 @@
 // IMPORTS
 import dotenv from 'dotenv'; // Import dotenv
 import express from 'express'; // Import express
+import cors from 'cors'; // Import cors
 import connectDB from './config/db.js'; // Import connectDB function
 import childrenRoutes from './routes/ChildrenRoutes.js'; // Import Children routes
 import medicalRecordsRoutes from './routes/MedicalRecordsRoutes.js'; // Import Medical Records routes
@@ -14,6 +15,8 @@ dotenv.config();
 connectDB();
 
 const app = express(); // Initialize express
+
+app.use(cors()); // CORS Middleware
 app.use(express.json()); // Middleware for parsing JSON
 
 // Use routes
@@ -32,3 +35,4 @@ app.listen(PORT, () => {
 app.get('/', (req, res) => {
     res.send('Home Page');
 });
+

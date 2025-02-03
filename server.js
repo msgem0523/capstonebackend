@@ -3,6 +3,7 @@ import dotenv from 'dotenv'; // Import dotenv
 import express from 'express'; // Import express
 import cors from 'cors'; // Import cors
 import connectDB from './config/db.js'; // Import connectDB function
+import userRoutes from './routes/UserRoutes.js'; // Import User routes
 import childrenRoutes from './routes/ChildrenRoutes.js'; // Import Children routes
 import medicalRecordsRoutes from './routes/MedicalRecordsRoutes.js'; // Import Medical Records routes
 import milestoneRoutes from './routes/MilestoneRoutes.js'; // Import Milestones routes
@@ -20,6 +21,7 @@ app.use(cors()); // CORS Middleware
 app.use(express.json()); // Middleware for parsing JSON
 
 // Use routes
+app.use('/api/users', userRoutes);
 app.use('/api/children', childrenRoutes);
 app.use('/api/medical-records', medicalRecordsRoutes);
 app.use('/api/milestones', milestoneRoutes);

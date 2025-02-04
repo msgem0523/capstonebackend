@@ -1,5 +1,8 @@
 import express from 'express'; // Import express
 import Child from '../components/Children.js'; // Import Child model
+import MedicalRecord from '../components/MedicalRecords.js'; // Import MedicalRecord model
+import Milestone from '../components/Milestone.js'; // Import Milestone model
+import Vaccine from '../components/Vaccines.js'; // Import Vaccine model
 
 const router = express.Router(); // Initialize express router
 
@@ -73,5 +76,41 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+
+// Add medical record log
+router.post('/api/children/:childId/medical-records', async (req, res) => {
+    const { childId } = req.params;
+    const { date, location, height, weight, headCircumference, notes } = req.body;
+
+    try {
+        const child = await Child.findById(childId);
+        if (!child) {
+            return res.status(404).json({ error: 'Child not found' });
+        }
+
+        const newMedicalRecord = new MedicalRecord({
+            childId,
+            date,
+            location,
+            height,
+            weight,
+            headCircumference,
+            notes
+        });
+        await newMedicalRecord.save();
+
+        res.status(201).json(newMedicalRecord);
+    } catch (error) {
+        console.error('Error adding medical record:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+// Add milestone log
+
+
+// Add vaccine log
+
+
 
 export default router;

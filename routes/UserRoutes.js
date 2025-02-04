@@ -1,5 +1,7 @@
 import express from 'express'; // Import express
+import mongoose from 'mongoose'; // Import mongoose
 import User from '../components/User.js'; // Import User model
+import Child from '../components/Children.js'; // Import Child model
 
 const router = express.Router(); // Initialize express router
 
@@ -61,6 +63,49 @@ router.put('/:id', async (req, res) => {
         res.status(200).json(updatedUser);
     } catch (error) {
         res.status(400).json({ message: error.message });
+    }
+});
+
+// Add a new child to a user
+router.post('/:userId/children', async (req, res) => {
+    const { userId } = req.params;
+    const { firstName, lastName, birthdate, gender } = req.body;
+
+    try {
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        // Create and save the new child
+        const newChild = new Child({ firstName, lastName, birthdate, gender, parentId: userId });
+        await newChild.save();
+
+        // Add the child's reference to the user's children array
+        user.children.push(newChild._id);
+        await user.save();
+
+        res.status(201).json(newChild);
+    } catch (error) {
+        console.error('Error adding child:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+// Get all children of a user
+router.get('/:userId/children', async (req, res) => {
+    const { userId } = req.params;
+
+    try {
+        const user = await User.findById(userId).populate('children');
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        res.status(200).json(user.children);
+    } catch (error) {
+        console.error('Error fetching children:', error);
+        res.status(500).json({ error: 'Internal server error' });
     }
 });
 

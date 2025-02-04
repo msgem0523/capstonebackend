@@ -3,8 +3,8 @@ import mongoose from 'mongoose';
 const userSchema = new mongoose.Schema(
     {
         name: { type: String },
-        email: { type: String }
-        // children: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Child' }]
+        email: { type: String },
+        children: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Child' }]
     }
 );
 

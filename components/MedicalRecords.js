@@ -7,8 +7,7 @@ const medicalRecordSchema = new mongoose.Schema(
         location: { type: String, enum: ['Doctor Office', 'Hospital', 'Home'], required: true },
         height: { type: Number, required: true }, // in inches
         weight: { type: Number, required: true }, // in pounds
-        headCircumference: { type: Number, required: true }, // in inches
-        vaccines: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Vaccine' }], // Reference to Vaccine model
+        headCircumference: { type: Number, required: true }, // in centimeters
         notes: { type: String, required: true },
     }
 );

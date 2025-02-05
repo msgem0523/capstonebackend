@@ -7,7 +7,6 @@ import User from './components/User.js';
 import Children from './components/Children.js';
 import MedicalRecord from './components/MedicalRecords.js';
 import Milestone from './components/Milestone.js';
-import Vaccine from './components/Vaccines.js';
 
 dotenv.config(); // Load environment variables
 
@@ -31,21 +30,18 @@ const importData = async () => {
         await Children.deleteMany();
         await MedicalRecord.deleteMany();
         await Milestone.deleteMany();
-        await Vaccine.deleteMany();
 
         // Read JSON files
         const users = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'database/User.json'), 'utf-8'));
         const children = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'database/Children.json'), 'utf-8'));
         const medicalRecords = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'database/MedicalRecords.json'), 'utf-8'));
         const milestones = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'database/Milestone.json'), 'utf-8'));
-        const vaccines = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'database/Vaccines.json'), 'utf-8'));
 
         // Insert data into the database
         await User.insertMany(users);
         await Children.insertMany(children);
         await MedicalRecord.insertMany(medicalRecords);
         await Milestone.insertMany(milestones);
-        await Vaccine.insertMany(vaccines);
 
         console.log('Data Imported!');
         process.exit();
@@ -62,7 +58,6 @@ const destroyData = async () => {
         await Children.deleteMany();
         await MedicalRecord.deleteMany();
         await Milestone.deleteMany();
-        await Vaccine.deleteMany();
 
         console.log('Data Destroyed!');
         process.exit();

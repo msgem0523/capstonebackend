@@ -2,7 +2,6 @@ import express from 'express'; // Import express
 import Child from '../components/Children.js'; // Import Child model
 import MedicalRecord from '../components/MedicalRecords.js'; // Import MedicalRecord model
 import Milestone from '../components/Milestone.js'; // Import Milestone model
-import Vaccine from '../components/Vaccines.js'; // Import Vaccine model
 
 const router = express.Router(); // Initialize express router
 
@@ -27,38 +26,30 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// POST: Create a new child
+// POST request to add a new child
 router.post('/', async (req, res) => {
-    console.log('Received Data:', req.body);
-
     try {
-        const { firstName, lastName, birthdate, gender } = req.body;
+        const { firstName, lastName, birthdate, gender, parentId } = req.body;
 
-        if (!firstName || !lastName || !birthdate || !gender) {
-            console.log('Validation Error: Missing fields');
+        if (!firstName || !lastName || !birthdate || !gender || !parentId) {
             return res.status(400).json({ error: 'All fields are required' });
         }
 
-        const newChild = new Child({ firstName, lastName, birthdate, gender });
+        const newChild = new Child({ firstName, lastName, birthdate, gender, parentId });
         await newChild.save();
 
         res.status(201).json(newChild);
     } catch (error) {
-        console.error('Error adding child:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 });
 
 // PUT: Update a child by ID
 router.put('/:id', async (req, res) => {
-    const { firstName, lastName, birthdate, gender, parentId } = req.body;
+    const { firstName, lastName, birthdate, gender } = req.body;
 
     try {
-        const updatedChild = await Child.findByIdAndUpdate(
-            req.params.id,
-            { firstName, lastName, birthdate, gender, parentId },
-            { new: true, runValidators: true }
-        );
+        const updatedChild = await Child.findByIdAndUpdate(req.params.id, { firstName, lastName, birthdate, gender }, { new: true });
         if (!updatedChild) return res.status(404).json({ message: 'Child not found' });
         res.status(200).json(updatedChild);
     } catch (error) {
@@ -107,9 +98,6 @@ router.post('/api/children/:childId/medical-records', async (req, res) => {
 });
 
 // Add milestone log
-
-
-// Add vaccine log
 
 
 

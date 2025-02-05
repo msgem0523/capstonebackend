@@ -1,9 +1,8 @@
-import express from 'express'; // Import express
-import mongoose from 'mongoose'; // Import mongoose
-import User from '../components/User.js'; // Import User model
-import Child from '../components/Children.js'; // Import Child model
+import express from 'express';
+import User from '../components/User.js';
+import Child from '../components/Children.js';
 
-const router = express.Router(); // Initialize express router
+const router = express.Router();
 
 // GET all users
 router.get('/', async (req, res) => {
@@ -54,11 +53,7 @@ router.put('/:id', async (req, res) => {
     const { name, email } = req.body;
 
     try {
-        const updatedUser = await User.findByIdAndUpdate(
-            req.params.id,
-            { name, email },
-            { new: true, runValidators: true }
-        );
+        const updatedUser = await User.findByIdAndUpdate(req.params.id, { name, email }, { new: true });
         if (!updatedUser) return res.status(404).json({ message: 'User not found' });
         res.status(200).json(updatedUser);
     } catch (error) {
@@ -77,11 +72,9 @@ router.post('/:userId/children', async (req, res) => {
             return res.status(404).json({ error: 'User not found' });
         }
 
-        // Create and save the new child
         const newChild = new Child({ firstName, lastName, birthdate, gender, parentId: userId });
         await newChild.save();
 
-        // Add the child's reference to the user's children array
         user.children.push(newChild._id);
         await user.save();
 

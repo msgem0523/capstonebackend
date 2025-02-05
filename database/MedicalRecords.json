@@ -6,7 +6,6 @@
         "height": 30,
         "weight": 20,
         "headCircumference": 18,
-        "vaccines": ["d6", "d7"],
         "notes": "Routine check-up, all vaccines up to date."
     },
     {
@@ -16,7 +15,6 @@
         "height": 32,
         "weight": 22,
         "headCircumference": 19,
-        "vaccines": ["d8", "d9"],
         "notes": "Emergency visit due to fever, administered flu vaccine."
     },
     {
@@ -26,7 +24,6 @@
         "height": 31,
         "weight": 21,
         "headCircumference": 18.5,
-        "vaccines": ["da"],
         "notes": "Home visit for routine vaccination."
     }
 ]

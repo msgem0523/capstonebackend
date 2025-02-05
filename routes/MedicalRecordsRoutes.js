@@ -1,5 +1,6 @@
 import express from 'express';
 import MedicalRecord from '../components/MedicalRecords.js';
+import Child from '../components/Children.js';
 
 const router = express.Router();
 
@@ -24,38 +25,49 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// POST: Create a new medical record
-router.post('/', async (req, res) => {
-    const { childId, date, location, height, weight, headCircumference, vaccines, notes } = req.body;
-    const newMedicalRecord = new MedicalRecord({
-        childId,
-        date,
-        location,
-        height,
-        weight,
-        headCircumference,
-        vaccines,
-        notes,
-    });
+// POST request to add a new medical record
+router.post('/api/children/:childId/medical-records', async (req, res) => {
+    const { childId } = req.params;
+    const { date, location, height, weight, headCircumference, notes } = req.body;
 
     try {
-        const savedMedicalRecord = await newMedicalRecord.save();
-        res.status(201).json(savedMedicalRecord);
+        const child = await Child.findById(childId);
+        if (!child) {
+            return res.status(404).json({ error: 'Child not found' });
+        }
+
+        const newMedicalRecord = new MedicalRecord({
+            childId,
+            date,
+            location,
+            height,
+            weight,
+            headCircumference,
+            notes
+        });
+        await newMedicalRecord.save();
+
+        res.status(201).json(newMedicalRecord);
     } catch (error) {
-        res.status(400).json({ message: error.message });
+        console.error('Error adding medical record:', error);
+        res.status(500).json({ error: 'Internal server error' });
     }
 });
 
 // PUT: Update a medical record by ID
 router.put('/:id', async (req, res) => {
-    const { childId, date, location, height, weight, headCircumference, vaccines, notes } = req.body;
+    const { childId, date, location, height, weight, headCircumference, notes } = req.body;
 
     try {
-        const updatedMedicalRecord = await MedicalRecord.findByIdAndUpdate(
-            req.params.id,
-            { childId, date, location, height, weight, headCircumference, vaccines, notes },
-            { new: true, runValidators: true }
-        );
+        const updatedMedicalRecord = await MedicalRecord.findByIdAndUpdate(req.params.id, {
+            childId,
+            date,
+            location,
+            height,
+            weight,
+            headCircumference,
+            notes
+        }, { new: true });
         if (!updatedMedicalRecord) return res.status(404).json({ message: 'Medical record not found' });
         res.status(200).json(updatedMedicalRecord);
     } catch (error) {

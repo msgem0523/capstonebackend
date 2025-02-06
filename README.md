@@ -1,16 +1,22 @@
-# React + Vite
+# Pediatric App  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview  
+The **Pediatric App** is a full-stack web application designed to help parents track their child's medical history and developmental milestones. Built using the **MERN Stack (MongoDB, Express.js, React, Node.js)**, this app provides an intuitive and secure platform for managing essential pediatric health data.  
 
-Currently, two official plugins are available:
+## Features  
+✅ **Medical Logging** – Keep track of vaccinations, allergies, prescriptions, and doctor visits.  
+✅ **Milestone Tracking** – Log and monitor developmental milestones based on age groups.  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack  
+- **Frontend:** React.js, JavaScript  
+- **Backend:** Node.js, Express.js  
+- **Database:** MongoDB  
+- **Authentication:** (Future enhancement: JWT or Firebase Auth)  
+- **State Management:** Context API / Redux (TBD)  
 
+## How It Works  
+1. Parents create an account and add their child's profile.  
+2. Medical records and milestones can be logged, updated, and viewed.   
 
-
-Capstone
-Software MERN Stack Developer
-Pediatric App
-
-I'm creating this app to help parents/caregivers a way to log and track their child(ren)'s medical history and developmental milestones.
+## Contact  
+For inquiries or collaboration, feel free to connect on **[LinkedIn](https://www.linkedin.com/in/temecha/)**.  

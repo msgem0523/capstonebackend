@@ -1,4 +1,5 @@
 import express from 'express';
+import mongoose from 'mongoose';
 import MedicalRecord from '../components/MedicalRecords.js';
 import Child from '../components/Children.js';
 
@@ -10,17 +11,39 @@ router.get('/', async (req, res) => {
         const medicalRecords = await MedicalRecord.find();
         res.status(200).json(medicalRecords);
     } catch (error) {
+        console.error('Error fetching medical records:', error);
         res.status(500).json({ message: error.message });
     }
 });
 
 // GET a medical record by ID
 router.get('/:id', async (req, res) => {
+    const { id } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(400).json({ message: 'Invalid ID format' });
+    }
     try {
-        const medicalRecord = await MedicalRecord.findById(req.params.id);
+        const medicalRecord = await MedicalRecord.findById(id);
         if (!medicalRecord) return res.status(404).json({ message: 'Medical record not found' });
         res.status(200).json(medicalRecord);
     } catch (error) {
+        console.error('Error fetching medical record by ID:', error);
+        res.status(500).json({ message: error.message });
+    }
+});
+
+// POST a new child (example endpoint)
+router.post('/children', async (req, res) => {
+    const { name, age, medicalRecordId } = req.body;
+    if (!mongoose.Types.ObjectId.isValid(medicalRecordId)) {
+        return res.status(400).json({ message: 'Invalid medical record ID format' });
+    }
+    try {
+        const child = new Child({ name, age, medicalRecord: medicalRecordId });
+        await child.save();
+        res.status(201).json(child);
+    } catch (error) {
+        console.error('Error adding child:', error);
         res.status(500).json({ message: error.message });
     }
 });

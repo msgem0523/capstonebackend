@@ -34,7 +34,7 @@ app.use(express.json()); // JSON Middleware
 
 // Use routes
 app.use('/api/users', userRoutes);
-app.use('/api', childrenRoutes); // Use Children routes
+app.use('/api/children', childrenRoutes); // Use Children routes
 app.use('/api/medical-records', medicalRecordsRoutes);
 app.use('/api/milestones', milestoneRoutes);
 

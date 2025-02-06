@@ -120,4 +120,37 @@ router.post('/children/:childId/milestones', async (req, res) => {
   }
 });
 
+// Fetch a child by ID
+router.get('/:childId', async (req, res) => {
+  try {
+    const child = await Child.findById(req.params.childId);
+    if (!child) {
+      return res.status(404).json({ message: 'Child not found' });
+    }
+    res.status(200).json(child);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+// Fetch medical records for a child
+router.get('/:childId/medical-records', async (req, res) => {
+  try {
+    const medicalRecords = await MedicalRecord.find({ childId: req.params.childId });
+    res.status(200).json(medicalRecords);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+// Fetch milestones for a child
+router.get('/:childId/milestones', async (req, res) => {
+  try {
+    const milestones = await Milestone.find({ childId: req.params.childId });
+    res.status(200).json(milestones);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
 export default router;

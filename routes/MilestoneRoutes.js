@@ -70,4 +70,14 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
+// Fetch milestones for a child
+router.get('/:childId/milestones', async (req, res) => {
+    try {
+      const milestones = await Milestone.find({ childId: req.params.childId });
+      res.status(200).json(milestones);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  });
+  
 export default router;

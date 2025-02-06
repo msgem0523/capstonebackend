@@ -34,7 +34,7 @@ router.get('/:id', async (req, res) => {
 
 // POST a new child (example endpoint)
 router.post('/children', async (req, res) => {
-    const { name, age, medicalRecordId } = req.body;
+    const { name, age, medicalRecordId } = req.params;
     if (!mongoose.Types.ObjectId.isValid(medicalRecordId)) {
         return res.status(400).json({ message: 'Invalid medical record ID format' });
     }
@@ -49,9 +49,9 @@ router.post('/children', async (req, res) => {
 });
 
 // POST request to add a new medical record
-router.post('/api/children/:childId/medical-records', async (req, res) => {
+router.post('/:childId/medical-records', async (req, res) => {
     const { childId } = req.params;
-    const { date, location, height, weight, headCircumference, notes } = req.body;
+    const { date, location, height, weight, notes } = req.body;
 
     try {
         const child = await Child.findById(childId);
@@ -65,7 +65,6 @@ router.post('/api/children/:childId/medical-records', async (req, res) => {
             location,
             height,
             weight,
-            headCircumference,
             notes
         });
         await newMedicalRecord.save();
@@ -79,7 +78,7 @@ router.post('/api/children/:childId/medical-records', async (req, res) => {
 
 // PUT: Update a medical record by ID
 router.put('/:id', async (req, res) => {
-    const { childId, date, location, height, weight, headCircumference, notes } = req.body;
+    const { childId, date, location, height, weight, headCircumference, notes } = req.params;
 
     try {
         const updatedMedicalRecord = await MedicalRecord.findByIdAndUpdate(req.params.id, {
@@ -108,5 +107,15 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+
+// Fetch medical records for a child
+router.get('/:childId/medical-records', async (req, res) => {
+    try {
+      const medicalRecords = await MedicalRecord.find({ childId: req.params.childId });
+      res.status(200).json(medicalRecords);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  });
 
 export default router;

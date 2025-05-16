@@ -1,22 +1,55 @@
-# Pediatric App  
+# Pediatric App – GrowthGuard Backend  
+[Backend Repo](https://github.com/msgem0523/capstonebackend) | [Frontend Repo](https://github.com/msgem0523/capstonefrontend)
 
 ## Overview  
-The **Pediatric App** is a full-stack web application designed to help parents track their child's medical history and developmental milestones. Built using the **MERN Stack (MongoDB, Express.js, React, Node.js)**, this app provides an intuitive and secure platform for managing essential pediatric health data.  
+The **Pediatric App (GrowthGuard)** backend powers a full-stack web application that helps parents track their child's medical history and developmental milestones. Built using **Node.js**, **Express.js**, and **MongoDB**, this RESTful API serves secure endpoints for managing users, children’s profiles, and health records.
+
+---
 
 ## Features  
-✅ **Medical Logging** – Keep track of vaccinations, allergies, prescriptions, and doctor visits.  
-✅ **Milestone Tracking** – Log and monitor developmental milestones based on age groups.  
+✅ **User Authentication** – (Planned) Secure login with JWT or Firebase Auth  
+✅ **Medical Logging** – Store vaccination history, allergy info, prescriptions, and doctor visits  
+✅ **Milestone Tracking** – Log developmental milestones based on age groups  
+✅ **RESTful API** – Designed for clean integration with the frontend  
+✅ **MongoDB Integration** – Mongoose schemas with validation and security in mind  
+
+---
 
 ## Tech Stack  
-- **Frontend:** React.js, JavaScript  
 - **Backend:** Node.js, Express.js  
-- **Database:** MongoDB  
-- **Authentication:** (Future enhancement: JWT or Firebase Auth)  
-- **State Management:** Context API / Redux (TBD)  
+- **Database:** MongoDB + Mongoose  
+- **Authentication:** JSON Web Token (JWT) *(Coming Soon)*  
+- **Environment Variables:** dotenv  
+- **Security:** bcrypt, CORS  
+- **Testing:** Postman for route testing
+
+---
 
 ## How It Works  
-1. Parents create an account and add their child's profile.  
-2. Medical records and milestones can be logged, updated, and viewed.   
+1. Backend serves as the API layer for the React frontend.  
+2. It exposes endpoints to create and manage user accounts, children’s profiles, and health records.  
+3. Includes secure authentication setup (in progress) and robust data validation with Mongoose.
 
-## Contact  
-For inquiries or collaboration, feel free to connect on **[LinkedIn](https://www.linkedin.com/in/temecha-griffin/)**.  
+---
+
+## API Endpoints (Sample)
+
+| Method | Route               | Description                      |
+|--------|---------------------|----------------------------------|
+| POST   | `/api/register`     | Register new user                |
+| POST   | `/api/login`        | Login and receive JWT token      |
+| GET    | `/api/children`     | Get all children for a user      |
+| POST   | `/api/children`     | Add a new child                  |
+| PUT    | `/api/children/:id` | Update a child’s profile         |
+| DELETE | `/api/children/:id` | Delete a child                   |
+
+*(These may vary depending on implementation; update as needed.)*
+
+---
+
+## Installation
+
+```bash
+git clone https://github.com/msgem0523/capstonebackend.git
+cd capstonebackend
+npm install

@@ -1,69 +1,89 @@
-# GrowthGuard App Backend  
-[Backend Repo](https://github.com/msgem0523/capstonebackend) | [Frontend Repo](https://github.com/msgem0523/capstonefrontend)
+# 🧠 Capstone Backend — Express & MongoDB
 
-## Overview  
-The **GrowthGuard App** backend powers a full-stack web application that helps parents track their child's medical history and developmental milestones. Built using **Node.js**, **Express.js**, and **MongoDB**, this RESTful API serves secure endpoints for managing users, children’s profiles, and health records.
+**Capstone Project** • Backend API
 
----
-
-## Features  
-✅ **User Authentication** – (Planned) Secure login with JWT or Firebase Auth  
-✅ **Medical Logging** – Store vaccination history, allergy info, prescriptions, and doctor visits  
-✅ **Milestone Tracking** – Log developmental milestones based on age groups  
-✅ **RESTful API** – Designed for clean integration with the frontend  
-✅ **MongoDB Integration** – Mongoose schemas with validation and security in mind  
+This repository contains the **backend API** for my full-stack capstone project. It is built with **Node.js, Express, and MongoDB** and provides data persistence and business logic for the frontend application.
 
 ---
 
-## Tech Stack  
-- **Backend:** Node.js, Express.js  
-- **Database:** MongoDB + Mongoose  
-- **Authentication:** JSON Web Token (JWT) *(Coming Soon)*  
-- **Environment Variables:** dotenv  
-- **Security:** bcrypt, CORS  
-- **Testing:** Postman for route testing
+## 🧠 About the Backend
+
+The backend is responsible for:
+
+- Handling HTTP requests
+- Providing RESTful API endpoints
+- Performing CRUD operations
+- Validating and storing data in MongoDB
+- Serving data to the frontend client
+
+This API is designed to support a React frontend and follows backend best practices.
 
 ---
 
-## How It Works  
-1. Backend serves as the API layer for the React frontend.  
-2. It exposes endpoints to create and manage user accounts, children’s profiles, and health records.  
-3. Includes secure authentication setup (in progress) and robust data validation with Mongoose.
+## 🛠️ Technologies Used
+
+| Technology | Purpose |
+|------------|---------|
+| **Node.js** | JavaScript runtime |
+| **Express.js** | API framework |
+| **MongoDB** | NoSQL database |
+| **Mongoose** | Schema modeling & validation |
+| **JavaScript** | Server-side logic |
 
 ---
 
-## API Endpoints (Sample)
+## 🔗 Related Repository
 
-| Method | Route               | Description                      |
-|--------|---------------------|----------------------------------|
-| POST   | `/api/register`     | Register new user                |
-| POST   | `/api/login`        | Login and receive JWT token      |
-| GET    | `/api/children`     | Get all children for a user      |
-| POST   | `/api/children`     | Add a new child                  |
-| PUT    | `/api/children/:id` | Update a child’s profile         |
-| DELETE | `/api/children/:id` | Delete a child                   |
-
-*(These may vary depending on implementation; update as needed.)*
+👉 **Frontend Application:**  
+https://github.com/msgem0523/capstonefrontend
 
 ---
 
-## Installation
+## 📁 Project Structure
 
-```bash
-git clone https://github.com/msgem0523/capstonebackend.git
-cd capstonebackend
-npm install
-```
-
+├── routes/ – API route definitions
+├── models/ – MongoDB schemas
+├── controllers/ – Request handling logic
+├── config/ – Database configuration
+├── server.js – Server entry point
+├── package.json – Dependencies and scripts
+└── README.md – Documentation
 
 
 ---
 
-## Contact  
-Got questions, feedback, or want to collaborate on pediatric tech?  
-Reach out to me on [LinkedIn](https://www.linkedin.com/in/temecha-griffin/). 💜
+## ▶️ How to Run Locally
 
----
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/msgem0523/capstonebackend.git
+   cd capstonebackend
+2. Install dependencies:
+   ```bash
+   npm install
+3. Configure environment variables:
+   Add a .env file with your MongoDB connection string
+4. Start the server:
+   ```bash
+   npm start
+   or
+   ```bash
+   node server.js
+5. API runs at:
+   http://localhost:3000
 
-## License  
-This project is licensed under the [MIT License](./LICENSE).
+🧩 Learning Outcomes
+
+Through this project, I practiced:
+
+✔ Building RESTful APIs with Express
+✔ Integrating MongoDB with Mongoose
+✔ Implementing CRUD operations
+✔ Applying validation and schema design
+✔ Separating frontend and backend concerns
+
+✨ Author
+
+TeMecha Griffin (MsGem0523)
+Aspiring Software Engineer | Backend-Focused Developer
+
